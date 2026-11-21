@@ -14,6 +14,38 @@
   --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
+/* Light Mode Theme Tokens */
+[data-theme="light"] {
+  color-scheme: light;
+  --bg-void: #f3f6fa;
+  --bg-panel: #ffffff;
+  --bg-inset: #e7eef6;
+  --text-main: #0f172a;
+  --text-dim: #334155;
+  --text-faint: #64748b;
+  --term-cyan: #0284c7;
+  --term-amber: #b45309;
+  --term-emerald: #047857;
+  --hairline: #cbd5e1;
+  --hairline-bright: rgba(2, 132, 199, 0.55);
+}
+
+[data-theme="light"] body {
+  background-image: radial-gradient(rgba(2, 132, 199, 0.14) 1px, transparent 1px);
+}
+
+[data-theme="light"] .console-nav {
+  background: rgba(243, 246, 250, 0.92);
+}
+
+[data-theme="light"] .navbar-toggler-icon {
+  filter: none;
+}
+
+[data-theme="light"] .btn-deck {
+  color: #ffffff;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;

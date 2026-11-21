@@ -1,6 +1,44 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const toggleButtons = document.querySelectorAll(".toggle-details-btn");
+  const themeToggle = document.getElementById("themeToggle");
+  const rootElement = document.documentElement;
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
 
+  const applyTheme = (theme) => {
+    const isLight = theme === "light";
+    if (isLight) {
+      rootElement.setAttribute("data-theme", "light");
+    } else {
+      rootElement.removeAttribute("data-theme");
+    }
+
+    if (themeMeta) {
+      themeMeta.setAttribute("content", isLight ? "#f3f6fa" : "#070b10");
+    }
+
+    if (themeToggle) {
+      themeToggle.textContent = isLight ? "☾ Dark" : "☀ Light";
+      themeToggle.setAttribute("aria-pressed", String(isLight));
+      themeToggle.setAttribute(
+        "aria-label",
+        isLight ? "Switch to dark mode" : "Switch to light mode"
+      );
+    }
+  };
+
+  const savedTheme = localStorage.getItem("portfolio-theme") || "dark";
+  applyTheme(savedTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const currentTheme =
+        rootElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+      const nextTheme = currentTheme === "light" ? "dark" : "light";
+      localStorage.setItem("portfolio-theme", nextTheme);
+      applyTheme(nextTheme);
+    });
+  }
+  
+  const toggleButtons = document.querySelectorAll(".toggle-details-btn");
   toggleButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const details = document.getElementById(button.dataset.target);
