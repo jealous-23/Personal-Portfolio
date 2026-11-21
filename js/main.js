@@ -72,11 +72,14 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (problems.length > 0) {
-        setFeedback("⚠ Please fill in: " + problems.join(", ") + ".", "small text-danger fw-semibold");
+        setFeedback("⚠ Please fill in: " + problems.join(", ") + ".", "small text-warning fw-semibold");
         return;
       }
 
-      setFeedback(`✔ Thanks, ${nameInput.value.trim()}! Demo submitted — no message was actually sent.`, "small text-success fw-semibold");
+      setFeedback(
+        `✔ Thanks, ${nameInput.value.trim()}! Demo submitted — no message was actually sent.`,
+        "small text-info fw-semibold"
+      );
       form.reset();
     });
 
