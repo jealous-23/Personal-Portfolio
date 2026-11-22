@@ -491,7 +491,7 @@ pre,
   }
 
   .deck-avatar {
-    height: 210px;
+    height: auto;
   }
 }
 
